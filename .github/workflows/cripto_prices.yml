@@ -2,7 +2,7 @@ name: crypto_prices
 
 on:
   schedule:
-    - cron: '30 8,20 * * *' # At 09:00 and 21:00 every day (+1 timezone)
+    - cron: '0 8,21 * * *' # At 09:00 and 21:00 every day (+1 timezone)
 
 jobs:
   build:
