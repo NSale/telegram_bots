@@ -8,7 +8,7 @@ CURRENCIES = ['Bitcoin', 'Ethereum', 'XRP', 'Cardano',  'Polkadot', 'Solana', 'P
 URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 PARAMETERS = {
   'start':'1',
-  'limit':'15',
+  'limit':'25',
   'convert': FIAT
 }
 try: 
