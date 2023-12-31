@@ -1,4 +1,4 @@
-name: air_quality
+name: current_air_quality
 
 on:
   schedule:
@@ -22,12 +22,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      - name: execute py script # run air_quality.py
+      - name: execute py script # run current_air_quality.py
         env:
-          API_KEY_AIRVISUAL: ${{ secrets.API_KEY_AIRVISUAL }}
+          API_KEY_OPENWEATHERMAP: ${{ secrets.API_KEY_OPENWEATHERMAP }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-        run: python air_quality.py
+        run: python current_air_quality.py
           
       - name: commit files
         run: |
