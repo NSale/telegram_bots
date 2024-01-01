@@ -34,13 +34,13 @@ except (ConnectionError, Timeout, TooManyRedirects) as e:
 polution_degre = data['list'][0]['main']['aqi']
 
 def get_air_quality(polution_degree):
-  if polution_degree in range(1):
+  if polution_degree == 1:
     return 'добар'
-  elif polution_degree in range(2):
+  elif polution_degree  == 2:
     return 'умерено загађен'
-  elif polution_degree in range(3):
+  elif polution_degree == 3:
     return 'нездрав за осетљиве групе'
-  elif polution_degree in range(4):
+  elif polution_degree == 4:
     return 'нездрав'
   else:
     return 'веома нездрав'
@@ -49,7 +49,7 @@ polutants = data['list'][0]['components']
   
 
 def make_message():
-    return f"Индекс загађења је  {polution_degre}, ваздух је {get_air_quality(polution_degre)}, а загађивачи су следећи: {polutants}."
+    return f"Индекс загађења је {polution_degre}, ваздух је {get_air_quality(polution_degre)}, а загађивачи су следећи: {polutants}."
 
 def send_to_telegram():
     try:

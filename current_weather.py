@@ -4,8 +4,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 
 # openweathermap constants
 try: 
-#   API_KEY_OPENWEATHERMAP = os.environ['API_KEY_OPENWEATHERMAP']
-  API_KEY_OPENWEATHERMAP = '92ec0d7ac0eb6f819f3cbb4878cf822d'
+  API_KEY_OPENWEATHERMAP = os.environ['API_KEY_OPENWEATHERMAP']
 except KeyError:
   logging.error('API token for openweathermap is not available!')
 LAT = 45.2396085
@@ -14,13 +13,11 @@ URL = f'http://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&units
 
 # telegram constants
 try: 
-#   API_TOKEN = os.environ['API_TOKEN']
-   API_TOKEN = '5668465982:AAERJNaPbyjL9mpsXpXGiUWp3ohV-cDtKFE'
+  API_TOKEN = os.environ['API_TOKEN']
 except KeyError:
   logging.error('API token for telegram is not available!')
 try: 
-#   CHAT_ID = os.environ['CHAT_ID']
-   CHAT_ID = '1631600460'
+  CHAT_ID = os.environ['CHAT_ID']
 except KeyError:
   logging.error('Chat id for telegram is not available!')
 API_URL = f'https://api.telegram.org/bot{API_TOKEN}/sendMessage'
