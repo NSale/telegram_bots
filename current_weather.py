@@ -9,7 +9,7 @@ except KeyError:
   logging.error('API token for openweathermap is not available!')
 LAT = 45.2396085
 LON = 19.8227056 
-URL = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={LAT}&lon={LON}&appid={API_KEY_OPENWEATHERMAP}'
+URL = f'http://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&units=metric&appid={API_KEY_OPENWEATHERMAP}'
 
 # telegram constants
 try: 
@@ -30,26 +30,10 @@ try:
   data = json.loads(response.text)
 except (ConnectionError, Timeout, TooManyRedirects) as e:
   logging.error(e)
-
-polution_degre = data['list'][0]['main']['aqi']
-
-def get_air_quality(polution_degree):
-  if polution_degree == 1:
-    return 'добар'
-  elif polution_degree  == 2:
-    return 'умерено загађен'
-  elif polution_degree == 3:
-    return 'нездрав за осетљиве групе'
-  elif polution_degree == 4:
-    return 'нездрав'
-  else:
-    return 'веома нездрав'
-
-polutants = data['list'][0]['components']
-  
+weather_data = data['main']
 
 def make_message():
-    return f"Индекс загађења је {polution_degre}, ваздух је {get_air_quality(polution_degre)}, а загађивачи су следећи: {polutants}."
+    return f"Тренутна температура је {str(weather_data['temp'])}\N{DEGREE SIGN}C, субјективни осећај је {str(weather_data['feels_like'])}\N{DEGREE SIGN}C. Ваздушни притисак је {str(weather_data['pressure'])} mbar, влажност ваздуха {str(weather_data['humidity'])}%, а брзина ветра {str(data['wind']['speed'])} m/s."
 
 def send_to_telegram():
     try:
