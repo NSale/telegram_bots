@@ -2,7 +2,7 @@ name: epl_odds
 
 on:
   schedule:
-    - cron: '0 22 * * 1-5' # At 11 a.m. every week from Monday until Friday (+1 timezone)
+    - cron: '0 10 * * 1-5' # At 11 a.m. every week from Monday until Friday (+1 timezone)
 
 jobs:
   build:

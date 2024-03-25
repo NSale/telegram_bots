@@ -39,28 +39,28 @@ team_odds_second_gw = {}
 team_odds_third_gw = {}
 
 for event in first_gw:
-    team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
-    team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
-    team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
-    team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
-    team_odds_first_gw.update({team_one_name: team_one_odds})
-    team_odds_first_gw.update({team_two_name: team_two_odds})
+  team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
+  team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
+  team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
+  team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
+  team_odds_first_gw.update({team_one_name: team_one_odds})
+  team_odds_first_gw.update({team_two_name: team_two_odds})
 
 for event in second_gw:
-    team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
-    team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
-    team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
-    team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
-    team_odds_second_gw.update({team_one_name: team_one_odds})
-    team_odds_second_gw.update({team_two_name: team_two_odds})
+  team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
+  team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
+  team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
+  team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
+  team_odds_second_gw.update({team_one_name: team_one_odds})
+  team_odds_second_gw.update({team_two_name: team_two_odds})
 
 for event in third_gw:
-    team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
-    team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
-    team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
-    team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
-    team_odds_third_gw.update({team_one_name: team_one_odds})
-    team_odds_third_gw.update({team_two_name: team_two_odds})
+  team_one_name = event['bookmakers'][0]['markets'][0]['outcomes'][0]['name']
+  team_two_name = event['bookmakers'][0]['markets'][0]['outcomes'][1]['name']
+  team_one_odds = event['bookmakers'][0]['markets'][0]['outcomes'][0]['price']
+  team_two_odds = event['bookmakers'][0]['markets'][0]['outcomes'][1]['price']
+  team_odds_third_gw.update({team_one_name: team_one_odds})
+  team_odds_third_gw.update({team_two_name: team_two_odds})
 
 best_five_odss_gw1 = sorted(team_odds_first_gw.items(), key=lambda item: item[1])[:5]
 best_five_odss_gw2 = sorted(team_odds_second_gw.items(), key=lambda item: item[1])[:5]
@@ -69,12 +69,12 @@ best_five_odss_gw3 = sorted(team_odds_third_gw.items(), key=lambda item: item[1]
   
 
 def make_message():
-    return f"Best odds for the next gw: {best_five_odss_gw1}, gw after that: {best_five_odss_gw2} and the last gw: {best_five_odss_gw3}."
+  return f"gw1: {best_five_odss_gw1},\n gw2: {best_five_odss_gw2}\n gw3: {best_five_odss_gw3}."
 
 def send_to_telegram():
-    try:
-        requests.post(API_URL, json={'chat_id': CHAT_ID, 'text': make_message()})
-    except Exception as e:
-        logging.error(e)
+  try:
+      requests.post(API_URL, json={'chat_id': CHAT_ID, 'text': make_message()})
+  except Exception as e:
+      logging.error(e)
 
 send_to_telegram()
